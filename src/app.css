@@ -9,3 +9,20 @@ Page {
   background: white;
   color: black;
 }
+
+/* Global thin font */
+Label,
+Button,
+TextField,
+TextView {
+  font-family: 'System', sans-serif;
+  font-weight: 300;
+}
+
+.font-bold {
+  font-weight: 500;
+}
+
+.font-light {
+  font-weight: 200;
+}
