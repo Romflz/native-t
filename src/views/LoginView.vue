@@ -66,7 +66,6 @@ function decodeJwt(token: string) {
   return JSON.parse(payload)
 }
 
-// TODO: Persistent storagfe
 async function login() {
   if (!username.value.trim() || !password.value.trim()) {
     error.value = 'Please enter username and password'
