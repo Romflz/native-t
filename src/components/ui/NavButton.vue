@@ -37,10 +37,9 @@ const views: Record<string, any> = {
 const isActive = computed(() => navStore.active === props.page)
 
 function navigate() {
-  if (navStore.active === props.page) return
   navStore.setActive(props.page)
   if (views[props.page]) {
-    $navigateTo(views[props.page])
+    $navigateTo(views[props.page], { clearHistory: true })
   }
 }
 </script>

@@ -5,9 +5,9 @@
       <StackLayout row="0" class="bg-black" />
 
       <!-- Content -->
-      <StackLayout row="1" class="bg-white">
+      <GridLayout row="1" class="bg-white">
         <slot />
-      </StackLayout>
+      </GridLayout>
 
       <!-- Bottom Navigation -->
       <GridLayout row="2" columns="*, *, *" class="bg-white" verticalAlignment="top" marginTop="10" marginBottom="20">
