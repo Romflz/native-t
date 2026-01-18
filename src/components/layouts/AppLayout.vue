@@ -1,9 +1,6 @@
 <template>
   <Page actionBarHidden="true">
     <GridLayout rows="25, *, 85">
-      <!-- Status bar spacer (For contrast) -->
-      <StackLayout row="0" class="bg-black" />
-
       <!-- Content -->
       <GridLayout row="1" class="bg-white">
         <slot />
