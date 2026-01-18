@@ -33,6 +33,7 @@ import { Dialogs } from '@nativescript/core'
 import AppLayout from '~/components/layouts/AppLayout.vue'
 import { useUserStore } from '~/store/user'
 import { useCartStore } from '~/store/cart'
+import { useNavStore } from '~/store/nav'
 import LoginView from '~/views/LoginView.vue'
 
 interface Product {
@@ -50,6 +51,7 @@ const props = defineProps<{
 
 const userStore = useUserStore()
 const cartStore = useCartStore()
+const navStore = useNavStore()
 const product = ref<Product | null>(null)
 const loading = ref(true)
 
@@ -62,7 +64,8 @@ const goBack = () => {
 }
 
 const goToLogin = () => {
-  $navigateTo(LoginView)
+  navStore.setActive('login')
+  $navigateTo(LoginView, { clearHistory: true })
 }
 
 const addToCart = () => {
