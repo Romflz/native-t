@@ -3,7 +3,13 @@
     <!-- Logged in -->
     <GridLayout v-if="userStore.isLoggedIn" rows="*" columns="*">
       <StackLayout verticalAlignment="center" horizontalAlignment="center" marginLeft="40" marginRight="40">
-        <Image src="~/assets/icons/user.png" width="80" height="80" class="mb-6" horizontalAlignment="center" />
+        <Image
+          src="https://cdn-icons-png.flaticon.com/512/1946/1946429.png"
+          width="80"
+          height="80"
+          class="mb-6"
+          horizontalAlignment="center"
+        />
         <Label text="Welcome back," class="text-gray-400 text-center text-lg" />
         <Label :text="userStore.username" class="text-3xl font-bold text-center mb-10" />
         <Button text="Sign Out" @tap="logout" class="bg-black text-white p-4 rounded-xl" width="100%" />
@@ -13,7 +19,13 @@
     <!-- Not logged in -->
     <GridLayout v-else rows="*" columns="*">
       <StackLayout verticalAlignment="center" horizontalAlignment="center" marginLeft="40" marginRight="40">
-        <Image src="~/assets/icons/user.png" width="80" height="80" class="mb-6" horizontalAlignment="center" />
+        <Image
+          src="https://cdn-icons-png.flaticon.com/512/1946/1946429.png"
+          width="80"
+          height="80"
+          class="mb-6"
+          horizontalAlignment="center"
+        />
         <Label text="Welcome" class="text-3xl font-bold text-center mb-2" />
         <Label text="Sign in to continue" class="text-gray-400 text-center mb-10" />
 

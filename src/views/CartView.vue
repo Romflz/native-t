@@ -4,7 +4,13 @@
     <GridLayout v-if="!userStore.isLoggedIn" rows="*" columns="*">
       <StackLayout verticalAlignment="center" horizontalAlignment="center" marginLeft="25" marginRight="25">
         <StackLayout class="bg-gray-100 rounded-2xl p-8" horizontalAlignment="center" width="100%">
-          <Image src="~/assets/icons/lock.png" width="48" height="48" class="mb-4" horizontalAlignment="center" />
+          <Image
+            src="https://cdn-icons-png.flaticon.com/512/3064/3064197.png"
+            width="48"
+            height="48"
+            class="mb-4"
+            horizontalAlignment="center"
+          />
           <Label text="Login Required" class="text-xl font-bold text-center mb-2" />
           <Label text="Please sign in to view your cart and checkout" class="text-gray-500 text-center mb-6" textWrap="true" />
           <Button text="Sign In" @tap="goToLogin" class="bg-black text-white p-4 rounded-xl" width="100%" />
