@@ -92,11 +92,9 @@ async function login() {
     }
 
     const data = await response.json()
-    console.log('Login token:', data.token)
 
     // Decode JWT to get user ID
     const decoded = decodeJwt(data.token)
-    console.log('Decoded JWT:', decoded)
 
     userStore.setUsername(username.value.trim())
     userStore.setToken(data.token)

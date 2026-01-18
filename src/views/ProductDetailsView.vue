@@ -13,7 +13,13 @@
           <Label :text="product.category" class="text-gray-500" marginBottom="8" />
           <Label :text="product.description" textWrap="true" marginBottom="16" />
 
-          <Button v-if="userStore.isLoggedIn" text="Add to Cart" class="bg-black text-white p-4 rounded-xl" @tap="addToCart" />
+          <Button v-if="userStore.isLoggedIn && !isInCart" text="Add to Cart" class="bg-black text-white p-4 rounded-xl" @tap="addToCart" />
+          <Button
+            v-else-if="userStore.isLoggedIn && isInCart"
+            text="Already in Cart"
+            class="bg-gray-400 text-white p-4 rounded-xl"
+            isEnabled="false"
+          />
           <Button v-else text="Login to Add to Cart" class="bg-gray-400 text-white p-4 rounded" @tap="goToLogin" />
         </StackLayout>
       </StackLayout>
@@ -22,7 +28,8 @@
 </template>
 
 <script setup lang="ts">
-import { onMounted, ref, $navigateBack, $navigateTo } from 'nativescript-vue'
+import { onMounted, ref, computed, $navigateBack, $navigateTo } from 'nativescript-vue'
+import { Dialogs } from '@nativescript/core'
 import AppLayout from '~/components/layouts/AppLayout.vue'
 import { useUserStore } from '~/store/user'
 import { useCartStore } from '~/store/cart'
@@ -46,6 +53,10 @@ const cartStore = useCartStore()
 const product = ref<Product | null>(null)
 const loading = ref(true)
 
+const isInCart = computed(() => {
+  return cartStore.items.some(item => item.id === props.productId)
+})
+
 const goBack = () => {
   $navigateBack()
 }
@@ -62,19 +73,19 @@ const addToCart = () => {
       price: product.value.price,
       image: product.value.image,
     })
+    Dialogs.alert('Added to cart!')
   }
 }
 
-onMounted(() => {
-  fetch(`https://fakestoreapi.com/products/${props.productId}`)
-    .then(response => response.json())
-    .then((data: Product) => {
-      product.value = data
-      loading.value = false
-    })
-    .catch(error => {
-      console.error('Error fetching product:', error)
-      loading.value = false
-    })
+onMounted(async () => {
+  try {
+    const response = await fetch(`https://fakestoreapi.com/products/${props.productId}`)
+    const data: Product = await response.json()
+    product.value = data
+    loading.value = false
+  } catch (error) {
+    console.error('Error fetching product:', error)
+    loading.value = false
+  }
 })
 </script>

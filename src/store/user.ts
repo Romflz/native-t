@@ -33,7 +33,6 @@ export const useUserStore = defineStore('user', () => {
       username.value = storedUsername
       token.value = storedToken
       userId.value = storedUserId || null
-      console.log('User session restored:', storedUsername)
     }
   }
 
